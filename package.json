@@ -4,8 +4,6 @@
   "description": "Gros's website for music",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "browser-sync start --directory --server  --files='*.js, *.html, css/*.css'"
   },
   "repository": {
     "type": "git",
@@ -17,7 +15,8 @@
     "url": "https://github.com/sophiestix/gro_website/issues"
   },
   "homepage": "https://github.com/sophiestix/gro_website#readme",
+  "dependencies": {
+  },
   "devDependencies": {
-    "browser-sync": "^2.18.13"
   }
 }
