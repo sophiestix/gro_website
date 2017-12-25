@@ -3,6 +3,7 @@ require('angular-ui-router');
 require('angular-aria');
 require('angular-animate');
 require('angular-material');
+require('normalize-css');
 require('./components/home/home.js');
 
 var app = angular.module('myApp', ['ui.router', 'ngMaterial', 'myApp.home']);
