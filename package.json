@@ -14,20 +14,31 @@
     "url": "https://github.com/sophiestix/gro_website/issues"
   },
   "homepage": "https://github.com/sophiestix/gro_website#readme",
+  "babel": {
+    "presets": [
+      [
+        "env"
+      ]
+    ]
+  },
   "dependencies": {
+    "@babel/preset-env": "^7.0.0-beta.36",
+    "@uirouter/angularjs": "^1.0.12",
     "angular": "^1.6.8",
     "angular-animate": "^1.6.8",
     "angular-aria": "^1.6.8",
-    "angular-material": "^1.1.5",
-    "angular-ui-router": "^1.0.3",
     "normalize-css": "^2.3.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.21.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.23.1",
     "browserify": "^14.5.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
-    "gulp-jshint": "^2.0.4",
+    "gulp-jshint": "^2.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.5",
