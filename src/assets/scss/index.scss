@@ -1,3 +1,26 @@
-body {
-	background-color:hotpink;
-}
+// ======================================
+//  Partial Imports
+// ======================================
+
+// Utilities
+@import 'utilities/variables',
+        'utilities/mixins',
+        'utilities/functions',
+        'utilities/helpers';
+        
+// Base Styles     
+@import 'base/reset',
+        'base/base';
+
+// Layout Styles
+@import 'layout/containers';
+//         'layout/header',
+//         'layout/card',
+//         'layout/footer';
+
+// Component Styles
+@import 'components/navbar',
+		'components/intro';
+//         'components/buttons',
+//         'components/icons',
+//         'components/images';
