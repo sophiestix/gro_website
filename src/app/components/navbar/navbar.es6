@@ -6,7 +6,7 @@ const NavbarComponent = {
     <div id="navbar">
         <div id="logo">X</div>
         <div>
-            <span ng-repeat="section in $ctrl.sections">{{ section.name }}XX</span>
+            <span ng-repeat="section in $ctrl.sections">{{ section.name }}</span>
         </div>
     </div>`
 }

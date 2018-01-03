@@ -44762,7 +44762,99 @@ Object.keys(_components2.default).forEach(function (componentName) {
 //     .module('website')
 //     .component('navbar', Navbar);
 
-},{"./components":80,"@uirouter/angularjs":73,"angular":75,"normalize-css":77}],80:[function(require,module,exports){
+},{"./components":84,"@uirouter/angularjs":73,"angular":75,"normalize-css":77}],80:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var AboutController = function () {
+    function AboutController() {
+        _classCallCheck(this, AboutController);
+    }
+
+    _createClass(AboutController, [{
+        key: "$onInit",
+        value: function $onInit() {}
+    }]);
+
+    return AboutController;
+}();
+
+exports.default = AboutController;
+
+},{}],81:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _about = require('./about.controller');
+
+var _about2 = _interopRequireDefault(_about);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AboutComponent = {
+    controller: _about2.default,
+    template: '\n    <div id="about">\n        <div>\n            About\n        </div>\n    </div>'
+};
+
+exports.default = AboutComponent;
+
+},{"./about.controller":80}],82:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var HeaderController = function () {
+    function HeaderController() {
+        _classCallCheck(this, HeaderController);
+    }
+
+    _createClass(HeaderController, [{
+        key: "$onInit",
+        value: function $onInit() {}
+    }]);
+
+    return HeaderController;
+}();
+
+exports.default = HeaderController;
+
+},{}],83:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _header = require('./header.controller');
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HeaderComponent = {
+    controller: _header2.default,
+    template: '\n    <div>\n        <img src="/Users/zsofiaprivate/Google Drive/Coding/Gro_website/src/assets/img/8321.jpg"/>\n        <div id="logo">X</div>\n        <div>\n            <span ng-repeat="section in $ctrl.sections">{{ section.name }}</span>\n        </div>\n    </div>'
+};
+
+exports.default = HeaderComponent;
+
+},{"./header.controller":82}],84:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44773,55 +44865,68 @@ var _navbar = require('./navbar/navbar');
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
+var _header = require('./header/header');
+
+var _header2 = _interopRequireDefault(_header);
+
+var _section = require('./section/section');
+
+var _section2 = _interopRequireDefault(_section);
+
+var _about = require('./about/about');
+
+var _about2 = _interopRequireDefault(_about);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    navbar: _navbar2.default
+    navbar: _navbar2.default,
+    header: _header2.default,
+    section: _section2.default,
+    about: _about2.default
 };
 
-},{"./navbar/navbar":82}],81:[function(require,module,exports){
-"use strict";
+},{"./about/about":81,"./header/header":83,"./navbar/navbar":86,"./section/section":88}],85:[function(require,module,exports){
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var NavbarController = function NavbarController() {
-    _classCallCheck(this, NavbarController);
-};
+var NavbarController = function () {
+    function NavbarController() {
+        _classCallCheck(this, NavbarController);
+
+        this.sections = [{
+            name: 'home',
+            url: ''
+        }, {
+            name: 'about',
+            url: ''
+        }, {
+            name: 'songs',
+            url: ''
+        }, {
+            name: 'contact',
+            url: ''
+        }];
+    }
+
+    _createClass(NavbarController, [{
+        key: '$onInit',
+        value: function $onInit() {}
+    }]);
+
+    return NavbarController;
+}();
 
 exports.default = NavbarController;
 
-// angular
-//     .module('website.')
-//     .component('navbar', {
-//         templateUrl: "./src/app/components/navigaton/navigation.template.html",
-//         controller: function navbarController() {
-//             this.sections = [
-//                 {
-//                     name: 'home',
-//                     url: ''
-//                 },
-//                 {
-//                     name: 'about',
-//                     url: ''
-//                 },
-//                 {
-//                     name: 'songs',
-//                     url: ''
-//                 },
-//                 {
-//                     name: 'contact',
-//                     url: ''
-//                 }
-//             ];
-//         }
-//     }
-// );
-
-},{}],82:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44836,9 +44941,55 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var NavbarComponent = {
     controller: _navbar2.default,
-    template: '\n    <div id="navbar">\n        <div id="logo">X</div>\n        <div>\n            <span ng-repeat="section in $ctrl.sections">{{ section.name }}XX</span>\n        </div>\n    </div>'
+    template: '\n    <div id="navbar">\n        <div id="logo">X</div>\n        <div>\n            <span ng-repeat="section in $ctrl.sections">{{ section.name }}</span>\n        </div>\n    </div>'
 };
 
 exports.default = NavbarComponent;
 
-},{"./navbar.controller":81}]},{},[79]);
+},{"./navbar.controller":85}],87:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SectionController = function () {
+    function SectionController() {
+        _classCallCheck(this, SectionController);
+    }
+
+    _createClass(SectionController, [{
+        key: "$onInit",
+        value: function $onInit() {}
+    }]);
+
+    return SectionController;
+}();
+
+exports.default = SectionController;
+
+},{}],88:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _section = require('./section.controller');
+
+var _section2 = _interopRequireDefault(_section);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SectionComponent = {
+    controller: _section2.default,
+    template: '\n    <div id="section">\n        <div>\n            Section card\n        </div>\n    </div>'
+};
+
+exports.default = SectionComponent;
+
+},{"./section.controller":87}]},{},[79]);
