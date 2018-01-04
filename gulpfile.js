@@ -8,6 +8,8 @@ var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var imagemin = require('gulp-imagemin');
+var cache = require('gulp-cache');
 
 // gulp.task('lint', function() {
 //     return gulp.src('./src/app/**/*.js')
@@ -20,6 +22,12 @@ gulp.task('scripts', function(){
     .pipe(uglify())
     // .pipe(concat('vendor.min.js'))
     .pipe(gulp.dest('./public/'));
+});
+
+gulp.task('images', function(){
+    return gulp.src('./src/assets/img/**/*.+(png|jpg|gif|svg)')
+    .pipe(cache(imagemin()))
+    .pipe(gulp.dest('./public/images/'))
 });
 
 gulp.task('browserify', function() {
@@ -46,7 +54,7 @@ gulp.task('scss', function() {
         .pipe(gulp.dest('./src/assets/stylesheets/'));
 });
 
-gulp.task('build',['scss', 'copy', 'scripts']);
+gulp.task('build',['scss', 'copy', 'scripts', 'images']);
 
 gulp.task('browser-sync', ['build'], function() {
     browserSync.init({
