@@ -27,7 +27,7 @@ gulp.task('scripts', function(){
 gulp.task('images', function(){
     return gulp.src('./src/assets/img/**/*.+(png|jpg|gif|svg)')
     .pipe(cache(imagemin()))
-    .pipe(gulp.dest('./public/images/'))
+    .pipe(gulp.dest('./public/assets/images/'))
 });
 
 gulp.task('browserify', function() {
