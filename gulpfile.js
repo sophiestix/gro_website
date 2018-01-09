@@ -67,6 +67,10 @@ gulp.task('browser-sync', ['build'], function() {
                 "/node_modules": "node_modules"
             }
         },
+        serveStatic: [{
+            route: '/public',
+            dir: 'public'
+        }],
         browser: "google chrome"
     });
 });
