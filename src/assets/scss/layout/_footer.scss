@@ -1,0 +1,16 @@
+// ======================================
+//  Footer Styles
+// ======================================
+
+.footer {
+    padding: 2em 0 0;
+    height: 100px;
+    background-color: $color-tertiary;
+    margin-top: 3.5em;
+
+    & p {
+        font-size: 12px;
+        color: white;
+        text-align: center;
+    }
+  }

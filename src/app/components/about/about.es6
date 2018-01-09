@@ -5,7 +5,7 @@ const AboutComponent = {
     template: `
     <div id="about">
         <div>
-            About
+            About text
         </div>
     </div>`
 }

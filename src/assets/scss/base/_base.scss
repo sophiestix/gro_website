@@ -9,15 +9,23 @@
   body {
     color: $color-text;
     font-size: 1rem;
+    font-weight: $light-weight;
     line-height: 1.5;
     font-family: $font-stack-primary;
     // text-align: center;
     margin: 0;
+    background-color: lighten($black, 97%);
   }
   
   h1,
   h2 {
-    font-family: $font-stack-secondary;
+    font-family: $font-stack-primary;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: $medium-weight;
+    text-transform: uppercase;
   }
   
   p {

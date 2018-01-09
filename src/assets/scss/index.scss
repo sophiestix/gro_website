@@ -13,14 +13,15 @@
         'base/base';
 
 // Layout Styles
-@import 'layout/containers';
+@import 'layout/containers',
 //         'layout/header',
 //         'layout/card',
-//         'layout/footer';
+        'layout/footer';
 
 // Component Styles
 @import 'components/navbar',
-		'components/intro';
+        'components/intro',
+        'components/card';
 //         'components/buttons',
 //         'components/icons',
 //         'components/images';
