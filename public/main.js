@@ -44911,7 +44911,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var NavbarController = function () {
-    function NavbarController() {
+    function NavbarController($window) {
         _classCallCheck(this, NavbarController);
 
         this.sections = [{
@@ -44927,6 +44927,55 @@ var NavbarController = function () {
             name: 'contact',
             url: ''
         }];
+
+        var topOfPage = $window;
+        var headerTop = angular.element(document.getElementById('main-nav'));
+
+        // function toggleBackground () {
+        //     if ($window.pageYOffset > 100) {
+        //         headerTop.addClass('main-nav-bg');
+        //     } else {
+        //         headerTop.removeClass('main-nav-bg');
+        //     }
+        // };
+
+        // function toggleBackground () {
+        //     if ($window.pageYOffset > 50) {
+        //         this.addClass('main-nav-bg');
+        //     } else {
+        //         this.removeClass('main-nav-bg');
+        //     }
+        // };
+
+        function toggleBackground() {
+            return function ($scope, $element, $attr) {
+                angular.element($window).bind("scroll", function () {
+                    if (this.pageYOffset > 50) {
+                        // scope.boolChangeClass = true;
+                        headerTop.addClass('main-nav-bg');
+                    } else {
+                        // scope.boolChangeClass = false;
+                        // console.log('Header is in view.');
+                        headerTop.removeClass('main-nav-bg');
+                    }
+                    $scope.$apply();
+                });
+            };
+        }
+
+        // return function(scope, element, attrs) {
+        //     topOfPage.bind("scroll", function() {
+        //         if (this.pageYOffset >= 100) {
+        //             //  scope.boolChangeClass = true;
+        //              headerTop.addClass('main-nav-bg');
+        //          } else {
+        //             //  scope.boolChangeClass = false;
+        //             //  console.log('Header is in view.');
+        //             headerTop.removeClass('main-nav-bg');
+        //          }
+        //         $scope.$apply();
+        //     });
+        // };
     }
 
     _createClass(NavbarController, [{
@@ -44938,6 +44987,32 @@ var NavbarController = function () {
 }();
 
 exports.default = NavbarController;
+
+//when ancher the nav options to parts of the page:
+// https://docs.angularjs.org/api/ng/service/$anchorScroll
+// https://stackoverflow.com/questions/17284005/scrollto-function-in-angularjs
+// https://jsfiddle.net/brettdewoody/y65G5/
+
+// angular.module('anchorScrollOffsetExample', [])
+// .run(['$anchorScroll', function($anchorScroll) {
+//   $anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels
+// }])
+// .controller('headerCtrl', ['$anchorScroll', '$location', '$scope',
+//   function($anchorScroll, $location, $scope) {
+//     $scope.gotoAnchor = function(x) {
+//       var newHash = 'anchor' + x;
+//       if ($location.hash() !== newHash) {
+//         // set the $location.hash to `newHash` and
+//         // $anchorScroll will automatically scroll to it
+//         $location.hash('anchor' + x);
+//       } else {
+//         // call $anchorScroll() explicitly,
+//         // since $location.hash hasn't changed
+//         $anchorScroll();
+//       }
+//     };
+//   }
+// ]);
 
 },{}],85:[function(require,module,exports){
 'use strict';
@@ -44954,7 +45029,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var NavbarComponent = {
     controller: _navbar2.default,
-    template: '\n    <div id="navbar" class="main-nav">\n        <div id="logo" class="main-nav-logo">Gro Laier</div>\n        <ul>\n            <li ng-repeat="section in $ctrl.sections"><a href="#">{{ section.name }}</a></li>\n        </ul>\n    </div>'
+    template: '\n    <div id="main-nav" class="main-nav" ng-class="{ \'main-nav-bg\' : boolChangeClass}">\n        <div id="logo" class="main-nav-logo">Gro Laier</div>\n        <ul>\n            <li ng-repeat="section in $ctrl.sections"><a href="#">{{ section.name }}</a></li>\n        </ul>\n    </div>'
 };
 
 exports.default = NavbarComponent;

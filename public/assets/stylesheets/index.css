@@ -471,8 +471,15 @@ a {
     text-align: center; }
 
 .main-nav {
-  margin-top: 1em;
-  text-align: center; }
+  padding-top: 0.5em;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out; }
   .main-nav li {
     display: inline-block;
     margin: 0 0.65em; }
@@ -489,15 +496,10 @@ a {
   .main-nav-logo {
     font-family: "Niconne", cursive;
     font-size: 1.5em; }
-
-.header-top-area {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-  -webkit-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out; }
+  .main-nav-bg {
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    background: #fff; }
 
 .intro {
   background: url("/public/assets/images/8321.jpg");
@@ -525,7 +527,7 @@ a {
 
 .card {
   background: #fff;
-  width: 80%;
+  width: 70%;
   margin: 40px auto;
   text-align: center;
   padding: 25px; }
