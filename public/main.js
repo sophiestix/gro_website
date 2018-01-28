@@ -44844,16 +44844,25 @@ var _about = require('./about/about');
 
 var _about2 = _interopRequireDefault(_about);
 
+var _player = require('./player/player');
+
+var _player2 = _interopRequireDefault(_player);
+
+var _videos = require('./videos/videos');
+
+var _videos2 = _interopRequireDefault(_videos);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
     navbar: _navbar2.default,
     intro: _intro2.default,
     card: _card2.default,
-    about: _about2.default
+    about: _about2.default,
+    videos: _videos2.default
 };
 
-},{"./about/about":78,"./card/card":80,"./intro/intro":83,"./navbar/navbar":85}],82:[function(require,module,exports){
+},{"./about/about":78,"./card/card":80,"./intro/intro":83,"./navbar/navbar":85,"./player/player":87,"./videos/videos":90}],82:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45034,4 +45043,371 @@ var NavbarComponent = {
 
 exports.default = NavbarComponent;
 
-},{"./navbar.controller":84}]},{},[76]);
+},{"./navbar.controller":84}],86:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var PlayerController = function () {
+    function PlayerController() {
+        _classCallCheck(this, PlayerController);
+    }
+
+    _createClass(PlayerController, [{
+        key: '$onInit',
+        value: function $onInit() {
+
+            var apiKey = 'AIzaSyAH5PYYBhWdLEn2ln3t2iIj04jX6nXKxkU';
+            // https://console.developers.google.com/apis/credentials?project=gro-website-193413
+            // https://www.googleapis.com/youtube/v3/activities?part=snippet,contentDetails&channelId=UCbDrrvPXCMr9T8Dn0OQSMFg&key=AIzaSyAH5PYYBhWdLEn2ln3t2iIj04jX6nXKxkU
+            // https://www.youtube.com/channel/UCbDrrvPXCMr9T8Dn0OQSMFg
+
+            // https://github.com/jgthms/juketube/blob/master/app.js
+            // https://github.com/frandiox/OnsenUI-YouTube/blob/master/js/app.js
+            // https://medium.com/the-web-tub/make-a-youtube-app-with-angularjs-and-onsen-ui-c836e7e046e0
+            // https://developers.google.com/youtube/v3/sample_requests
+            // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+            // https://developers.google.com/youtube/v3/code_samples/javascript#my_uploaded_videos
+            // https://developers.google.com/youtube/v3/docs/channels/list
+            // https://developers.google.com/youtube/v3/guides/implementation/videos
+            // https://developers.google.com/api-client-library/javascript/samples/samples
+            // https://developers.google.com/api-client-library/javascript/start/start-js
+            // https://developers.google.com/youtube/v3/libraries
+            // https://developers.google.com/youtube/v3/getting-started
+            // https://developers.google.com/api-client-library/javascript/samples/samples
+            // https://github.com/youtube/api-samples/blob/master/javascript/README.md
+            // https://github.com/youtube/api-samples/blob/master/javascript/my_uploads.js
+            // https://github.com/youtube/api-samples/blob/master/javascript/auth.js
+            // https://github.com/youtube/api-samples/blob/master/javascript/quickstart.html
+            // https://github.com/google/google-api-javascript-client/blob/master/samples/simpleRequest.html
+            // https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest
+        }
+    }]);
+
+    return PlayerController;
+}();
+
+exports.default = PlayerController;
+
+},{}],87:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _player = require('./player.controller');
+
+var _player2 = _interopRequireDefault(_player);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PlayerComponent = {
+    controller: _player2.default,
+    scope: {},
+    transclude: {
+        'paragSlot': 'p'
+    },
+    template: '\n    <div id="player" class="player">\n        <p ng-transclude="paragSlot" class=""></p>\n        <ng-transclude></ng-transclude>\n    </div>'
+};
+
+exports.default = PlayerComponent;
+
+},{"./player.controller":86}],88:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = {
+    "kind": "youtube#activityListResponse",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/UURxkjz7uD8a_ZV_YsR_ZST9CIo\"",
+    "pageInfo": {
+        "totalResults": 5,
+        "resultsPerPage": 5
+    },
+    "items": [{
+        "kind": "youtube#activity",
+        "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/7vh075sJrZgKFRFZ9jh4-SDVYkY\"",
+        "id": "VTE1MDk0NDQ5ODA5NDc2ODY2OTAwNjczNg==",
+        "snippet": {
+            "publishedAt": "2017-10-31T10:16:20.000Z",
+            "channelId": "UCbDrrvPXCMr9T8Dn0OQSMFg",
+            "title": "Jul I December",
+            "description": "Provided to YouTube by Danmark Music Group\n\nJul I December · Gro Laier\n\nJul I December\n\n℗ Gro Laier\n\nReleased on: 2017-11-01\n\nComposer: Mette Gro von Halling Laier\nLyricist: Mette Gro von Halling Laier\n\nAuto-generated by YouTube.",
+            "thumbnails": {
+                "default": {
+                    "url": "https://i.ytimg.com/vi/99g4LFv82rs/default.jpg",
+                    "width": 120,
+                    "height": 90
+                },
+                "medium": {
+                    "url": "https://i.ytimg.com/vi/99g4LFv82rs/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                },
+                "high": {
+                    "url": "https://i.ytimg.com/vi/99g4LFv82rs/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                },
+                "standard": {
+                    "url": "https://i.ytimg.com/vi/99g4LFv82rs/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                },
+                "maxres": {
+                    "url": "https://i.ytimg.com/vi/99g4LFv82rs/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                }
+            },
+            "channelTitle": "Gro Laier - Topic",
+            "type": "upload"
+        },
+        "contentDetails": {
+            "upload": {
+                "videoId": "99g4LFv82rs"
+            }
+        }
+    }, {
+        "kind": "youtube#activity",
+        "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/fuQsHLpd5AbXz1imoUcIjnJdPxA\"",
+        "id": "VTE0OTA5NTU2MDI5NDc2ODcxMDYwNzgyNA==",
+        "snippet": {
+            "publishedAt": "2017-03-31T10:20:02.000Z",
+            "channelId": "UCbDrrvPXCMr9T8Dn0OQSMFg",
+            "title": "Smuk som om sommeren",
+            "description": "Provided to YouTube by Danmark Music Group\n\nSmuk som om sommeren · Gro Laier\n\nSmukke Sange\n\n℗ Gro Laier\n\nReleased on: 2017-04-01\n\nComposer: Gro Laier\nLyricist: Gro Laier\n\nAuto-generated by YouTube.",
+            "thumbnails": {
+                "default": {
+                    "url": "https://i.ytimg.com/vi/a0IywRVk2m8/default.jpg",
+                    "width": 120,
+                    "height": 90
+                },
+                "medium": {
+                    "url": "https://i.ytimg.com/vi/a0IywRVk2m8/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                },
+                "high": {
+                    "url": "https://i.ytimg.com/vi/a0IywRVk2m8/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                },
+                "standard": {
+                    "url": "https://i.ytimg.com/vi/a0IywRVk2m8/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                },
+                "maxres": {
+                    "url": "https://i.ytimg.com/vi/a0IywRVk2m8/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                }
+            },
+            "channelTitle": "Gro Laier - Topic",
+            "type": "upload"
+        },
+        "contentDetails": {
+            "upload": {
+                "videoId": "a0IywRVk2m8"
+            }
+        }
+    }, {
+        "kind": "youtube#activity",
+        "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/2cjIEQwNM_EgB6tgMrzPEdF_6GE\"",
+        "id": "VTE0OTA5NTU2MDE5NDc2ODcxMDYwNjk5Mg==",
+        "snippet": {
+            "publishedAt": "2017-03-31T10:20:01.000Z",
+            "channelId": "UCbDrrvPXCMr9T8Dn0OQSMFg",
+            "title": "Smukke sang",
+            "description": "Provided to YouTube by Danmark Music Group\n\nSmukke sang · Gro Laier\n\nSmukke Sange\n\n℗ Gro Laier\n\nReleased on: 2017-04-01\n\nComposer: Gro Laier\nLyricist: Gro Laier\n\nAuto-generated by YouTube.",
+            "thumbnails": {
+                "default": {
+                    "url": "https://i.ytimg.com/vi/as1ziN0h4Tg/default.jpg",
+                    "width": 120,
+                    "height": 90
+                },
+                "medium": {
+                    "url": "https://i.ytimg.com/vi/as1ziN0h4Tg/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                },
+                "high": {
+                    "url": "https://i.ytimg.com/vi/as1ziN0h4Tg/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                },
+                "standard": {
+                    "url": "https://i.ytimg.com/vi/as1ziN0h4Tg/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                },
+                "maxres": {
+                    "url": "https://i.ytimg.com/vi/as1ziN0h4Tg/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                }
+            },
+            "channelTitle": "Gro Laier - Topic",
+            "type": "upload"
+        },
+        "contentDetails": {
+            "upload": {
+                "videoId": "as1ziN0h4Tg"
+            }
+        }
+    }, {
+        "kind": "youtube#activity",
+        "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/VslMiB-LNtm92ioBffq7Jg_25lA\"",
+        "id": "VTE0OTA5NTU1MTA5NDc2ODcxMDYwOTM2MA==",
+        "snippet": {
+            "publishedAt": "2017-03-31T10:18:30.000Z",
+            "channelId": "UCbDrrvPXCMr9T8Dn0OQSMFg",
+            "title": "Det er det slet ikke værd",
+            "description": "Provided to YouTube by Danmark Music Group\n\nDet er det slet ikke værd · Gro Laier\n\nSmukke Sange\n\n℗ Gro Laier\n\nReleased on: 2017-04-01\n\nComposer: Gro Laier\nLyricist: Gro Laier\n\nAuto-generated by YouTube.",
+            "thumbnails": {
+                "default": {
+                    "url": "https://i.ytimg.com/vi/B5ZNkFTznhM/default.jpg",
+                    "width": 120,
+                    "height": 90
+                },
+                "medium": {
+                    "url": "https://i.ytimg.com/vi/B5ZNkFTznhM/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                },
+                "high": {
+                    "url": "https://i.ytimg.com/vi/B5ZNkFTznhM/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                },
+                "standard": {
+                    "url": "https://i.ytimg.com/vi/B5ZNkFTznhM/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                },
+                "maxres": {
+                    "url": "https://i.ytimg.com/vi/B5ZNkFTznhM/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                }
+            },
+            "channelTitle": "Gro Laier - Topic",
+            "type": "upload"
+        },
+        "contentDetails": {
+            "upload": {
+                "videoId": "B5ZNkFTznhM"
+            }
+        }
+    }, {
+        "kind": "youtube#activity",
+        "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/UK-867scF-IyL0BgRY__YHS-X1c\"",
+        "id": "VTE0OTA5NTU1MDg5NDc2ODcxMDYwODIwOA==",
+        "snippet": {
+            "publishedAt": "2017-03-31T10:18:28.000Z",
+            "channelId": "UCbDrrvPXCMr9T8Dn0OQSMFg",
+            "title": "Efteråret er så smukt",
+            "description": "Provided to YouTube by Danmark Music Group\n\nEfteråret er så smukt · Gro Laier\n\nSmukke Sange\n\n℗ Gro Laier\n\nReleased on: 2017-04-01\n\nComposer: Gro Laier\nLyricist: Gro Laier\n\nAuto-generated by YouTube.",
+            "thumbnails": {
+                "default": {
+                    "url": "https://i.ytimg.com/vi/GYxyjU8kChg/default.jpg",
+                    "width": 120,
+                    "height": 90
+                },
+                "medium": {
+                    "url": "https://i.ytimg.com/vi/GYxyjU8kChg/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                },
+                "high": {
+                    "url": "https://i.ytimg.com/vi/GYxyjU8kChg/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                },
+                "standard": {
+                    "url": "https://i.ytimg.com/vi/GYxyjU8kChg/sddefault.jpg",
+                    "width": 640,
+                    "height": 480
+                },
+                "maxres": {
+                    "url": "https://i.ytimg.com/vi/GYxyjU8kChg/maxresdefault.jpg",
+                    "width": 1280,
+                    "height": 720
+                }
+            },
+            "channelTitle": "Gro Laier - Topic",
+            "type": "upload"
+        },
+        "contentDetails": {
+            "upload": {
+                "videoId": "GYxyjU8kChg"
+            }
+        }
+    }]
+};
+
+},{}],89:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _mock = require('./mock');
+
+var _mock2 = _interopRequireDefault(_mock);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var VideosController = function () {
+    function VideosController() {
+        _classCallCheck(this, VideosController);
+
+        this.mockData = _mock2.default;
+    }
+
+    _createClass(VideosController, [{
+        key: '$onInit',
+        value: function $onInit() {}
+    }]);
+
+    return VideosController;
+}();
+
+exports.default = VideosController;
+
+},{"./mock":88}],90:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _videos = require('./videos.controller');
+
+var _videos2 = _interopRequireDefault(_videos);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var VideosComponent = {
+    controller: _videos2.default,
+    template: '\n    <div id="videos">\n        <div ng-repeat="item in $ctrl.mockData.items">\n            {{item.snippet.title}}\n        </div>\n    </div>'
+};
+
+exports.default = VideosComponent;
+// ng-repeat="icon in $ctrl.iconData.icons"
+
+},{"./videos.controller":89}]},{},[76]);

@@ -8,8 +8,12 @@
         <!-- <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" > -->
         <!-- <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css"> -->
         <link href="assets/stylesheets/index.css" rel="stylesheet">
+        <script src="https://apis.google.com/js/api.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+            
     </head>
     <body ng-app="website">
+            <div id="results"></div>
         <header>
             <navbar></navbar>
             <intro></intro>
@@ -22,6 +26,7 @@
         <card>
             <h2>my videos</h2>
             youtube album here
+            <videos></videos>
         </card>
         <card>
             <h2>contact me</h2>
@@ -34,4 +39,9 @@
     </footer>
     <!-- <script type="text/javascript" src="vendor.min.js"></script> -->
     <script type="text/javascript" src="main.js" charset="utf-8"></script>
+    <!-- <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad();"
+      onreadystatechange="if (this.readyState === 'complete') this.onload();">
+    </script> -->
+
 </html>
