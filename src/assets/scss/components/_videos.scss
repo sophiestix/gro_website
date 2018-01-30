@@ -1,0 +1,21 @@
+// ======================================
+//  Video Styles
+// ======================================
+
+.videos {
+    display: flex;
+    flex-flow: row wrap;
+    // align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+
+    .video-card {
+        border: 1px lightgrey solid;
+        width: 280px;
+        height: 400px;
+        padding: 10px;
+        margin: 10px;
+        text-align: left;
+    }
+}
+

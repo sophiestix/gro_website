@@ -10,5 +10,6 @@ export default {
     intro,
     card,
     about,
+    player,
     videos
 }

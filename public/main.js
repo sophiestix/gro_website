@@ -44804,10 +44804,11 @@ exports.default = {
     intro: _intro2.default,
     card: _card2.default,
     about: _about2.default,
+    player: _player2.default,
     videos: _videos2.default
 };
 
-},{"./about/about":78,"./card/card":80,"./intro/intro":83,"./navbar/navbar":85,"./player/player":87,"./videos/videos":90}],82:[function(require,module,exports){
+},{"./about/about":78,"./card/card":80,"./intro/intro":83,"./navbar/navbar":85,"./player/player":87,"./videos/videos":93}],82:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45007,31 +45008,46 @@ var PlayerController = function () {
     _createClass(PlayerController, [{
         key: '$onInit',
         value: function $onInit() {
+            // 2. This code loads the IFrame Player API code asynchronously.
+            var tag = document.createElement('script');
 
-            var apiKey = 'AIzaSyAH5PYYBhWdLEn2ln3t2iIj04jX6nXKxkU';
-            // https://console.developers.google.com/apis/credentials?project=gro-website-193413
-            // https://www.googleapis.com/youtube/v3/activities?part=snippet,contentDetails&channelId=UCbDrrvPXCMr9T8Dn0OQSMFg&key=AIzaSyAH5PYYBhWdLEn2ln3t2iIj04jX6nXKxkU
-            // https://www.youtube.com/channel/UCbDrrvPXCMr9T8Dn0OQSMFg
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-            // https://github.com/jgthms/juketube/blob/master/app.js
-            // https://github.com/frandiox/OnsenUI-YouTube/blob/master/js/app.js
-            // https://medium.com/the-web-tub/make-a-youtube-app-with-angularjs-and-onsen-ui-c836e7e046e0
-            // https://developers.google.com/youtube/v3/sample_requests
-            // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
-            // https://developers.google.com/youtube/v3/code_samples/javascript#my_uploaded_videos
-            // https://developers.google.com/youtube/v3/docs/channels/list
-            // https://developers.google.com/youtube/v3/guides/implementation/videos
-            // https://developers.google.com/api-client-library/javascript/samples/samples
-            // https://developers.google.com/api-client-library/javascript/start/start-js
-            // https://developers.google.com/youtube/v3/libraries
-            // https://developers.google.com/youtube/v3/getting-started
-            // https://developers.google.com/api-client-library/javascript/samples/samples
-            // https://github.com/youtube/api-samples/blob/master/javascript/README.md
-            // https://github.com/youtube/api-samples/blob/master/javascript/my_uploads.js
-            // https://github.com/youtube/api-samples/blob/master/javascript/auth.js
-            // https://github.com/youtube/api-samples/blob/master/javascript/quickstart.html
-            // https://github.com/google/google-api-javascript-client/blob/master/samples/simpleRequest.html
-            // https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest
+            // 3. This function creates an <iframe> (and YouTube player)
+            //    after the API code downloads.
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                    height: '390',
+                    width: '640',
+                    videoId: 'htEmKnJ0wlo',
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+
+            // 4. The API will call this function when the video player is ready.
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+
+            // 5. The API calls this function when the player's state changes.
+            //    The function indicates that when playing a video (state=1),
+            //    the player should play for six seconds and then stop.
+            var done = false;
+            function onPlayerStateChange(event) {
+                if (event.data == YT.PlayerState.PLAYING && !done) {
+                    setTimeout(stopVideo, 6000);
+                    done = true;
+                }
+            }
+            function stopVideo() {
+                player.stopVideo();
+            }
         }
     }]);
 
@@ -45039,6 +45055,50 @@ var PlayerController = function () {
 }();
 
 exports.default = PlayerController;
+
+// var apiKey = 'AIzaSyAH5PYYBhWdLEn2ln3t2iIj04jX6nXKxkU';
+// https://developers.google.com/youtube/v3/docs/channels/list#usage
+
+// 1. retrived the playlistIds using this url:
+
+// /youtube/v3/playlists',
+// {'channelId': 'UCCN-6225-ASUzvPPhiSboJQ',
+// 'part': 'snippet,contentDetails'});
+
+// https://www.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&channelId=UCCN-6225-ASUzvPPhiSboJQ&key=AIzaSyAH5PYYBhWdLEn2ln3t2iIj04jX6nXKxkU
+
+// 2. Retrived the videoIds for each playlist using this url:
+
+// /youtube/v3/playlistItems',
+// {'playlistId': 'PLY3QcufluVdT2jOnQOYVr1aLtD2V6pBzO',
+// 'part': 'snippet,contentDetails'});
+
+// https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=PLY3QcufluVdT2jOnQOYVr1aLtD2V6pBzO&key=AIzaSyAH5PYYBhWdLEn2ln3t2iIj04jX6nXKxkU
+
+
+// https://console.developers.google.com/apis/credentials?project=gro-website-193413
+// https://www.youtube.com/channel/UCbDrrvPXCMr9T8Dn0OQSMFg
+
+// https://developers.google.com/youtube/player_parameters
+// https://github.com/jgthms/juketube/blob/master/app.js
+// https://github.com/frandiox/OnsenUI-YouTube/blob/master/js/app.js
+// https://medium.com/the-web-tub/make-a-youtube-app-with-angularjs-and-onsen-ui-c836e7e046e0
+// https://developers.google.com/youtube/v3/sample_requests
+// https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+// https://developers.google.com/youtube/v3/code_samples/javascript#my_uploaded_videos
+// https://developers.google.com/youtube/v3/docs/channels/list
+// https://developers.google.com/youtube/v3/guides/implementation/videos
+// https://developers.google.com/api-client-library/javascript/samples/samples
+// https://developers.google.com/api-client-library/javascript/start/start-js
+// https://developers.google.com/youtube/v3/libraries
+// https://developers.google.com/youtube/v3/getting-started
+// https://developers.google.com/api-client-library/javascript/samples/samples
+// https://github.com/youtube/api-samples/blob/master/javascript/README.md
+// https://github.com/youtube/api-samples/blob/master/javascript/my_uploads.js
+// https://github.com/youtube/api-samples/blob/master/javascript/auth.js
+// https://github.com/youtube/api-samples/blob/master/javascript/quickstart.html
+// https://github.com/google/google-api-javascript-client/blob/master/samples/simpleRequest.html
+// https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest
 
 },{}],87:[function(require,module,exports){
 'use strict';
@@ -45055,14 +45115,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var PlayerComponent = {
     controller: _player2.default,
-    scope: {},
-    transclude: {
-        'paragSlot': 'p'
-    },
-    template: '\n    <div id="player" class="player">\n        <p ng-transclude="paragSlot" class=""></p>\n        <ng-transclude></ng-transclude>\n    </div>'
+    template: '\n    <div id="player"></div>\n    '
 };
 
 exports.default = PlayerComponent;
+
+// scope: {},
+//     transclude: {
+//         'paragSlot': 'p',
+//       },
+/* <div id="player" class="player">
+    <p ng-transclude="paragSlot" class=""></p>
+    <ng-transclude></ng-transclude>
+    <iframe>
+    </iframe>
+    <iframe width="420" height="315"
+        src="https://www.youtube.com/embed/99g4LFv82rs">
+    </iframe>
+</div> */
 
 },{"./player.controller":86}],88:[function(require,module,exports){
 "use strict";
@@ -45306,22 +45376,491 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.default = {
+    videos: [{
+        title: 'Dream a little dream of me',
+        description: 'Vocal Gro Laier\nPiano Carl-Ulrik Munk-Andersen\nMusic by Fabian Andre and Wilbur Schwandt and lyrics by Gus Kahn.',
+        video: '\n            <iframe width="260" height="200"\n                src="https://www.youtube.com/embed/htEmKnJ0wlo">\n            </iframe>\n            '
+    }, {
+        title: 'Streets of London song of Ralph McTell',
+        description: 'Gro Laier singing Streets of London accompanied by a beautiful piano played by Carl Ulrik Munk-Andersen',
+        video: '\n            <iframe width="260" height="200"\n                src="https://www.youtube.com/embed/9ul2fEwEl_0">\n            </iframe>\n            '
+    }, {
+        title: 'Summertime by George Gershwin',
+        description: '...',
+        video: '\n            <iframe width="260" height="200"\n                src="https://www.youtube.com/embed/vFiLl9_jfns">\n            </iframe>\n            '
+    }, {
+        title: 'The Man I Love',
+        description: '...',
+        video: '\n            <iframe width="260" height="200"\n                src="https://www.youtube.com/embed/7DgrF619e9w">\n            </iframe>\n            '
+    }, {
+        title: 'Drink to Me Only With Thine Eyes',
+        description: '...',
+        video: '\n            <iframe width="260" height="200"\n                src="https://www.youtube.com/embed/Gnppe79b2HI">\n            </iframe>\n            '
+    }]
+};
+
+},{}],90:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  "kind": "youtube#playlistItemListResponse",
+  "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/z5zvuJXrfId2jG-FxHiLRdEa8og\"",
+  "pageInfo": {
+    "totalResults": 5,
+    "resultsPerPage": 5
+  },
+  "items": [{
+    "kind": "youtube#playlistItem",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/IjD7x1DV8YGhG4fMDJ4zYReBvHM\"",
+    "id": "UExZM1FjdWZsdVZkUmZFdjFZSXVmOFdRQ01QcENFZlFYUS45NDk1REZENzhEMzU5MDQz",
+    "snippet": {
+      "publishedAt": "2016-04-29T09:20:03.000Z",
+      "channelId": "UCCN-6225-ASUzvPPhiSboJQ",
+      "title": "Dream a little dream of me",
+      "description": "Vocal Gro Laier\nPiano Carl-Ulrik Munk-Andersen\nMusic by Fabian Andre and Wilbur Schwandt and lyrics by Gus Kahn.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/htEmKnJ0wlo/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/htEmKnJ0wlo/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/htEmKnJ0wlo/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/htEmKnJ0wlo/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/htEmKnJ0wlo/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Gro Laier (SmukkeSange)",
+      "playlistId": "PLY3QcufluVdRfEv1YIuf8WQCMPpCEfQXQ",
+      "position": 0,
+      "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "htEmKnJ0wlo"
+      }
+    },
+    "contentDetails": {
+      "videoId": "htEmKnJ0wlo",
+      "videoPublishedAt": "2016-04-29T09:20:02.000Z"
+    }
+  }, {
+    "kind": "youtube#playlistItem",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/_tHv3gNT5Nj4nXeR8s0F59eUCMk\"",
+    "id": "UExZM1FjdWZsdVZkUmZFdjFZSXVmOFdRQ01QcENFZlFYUS4wOTA3OTZBNzVEMTUzOTMy",
+    "snippet": {
+      "publishedAt": "2014-08-23T12:27:22.000Z",
+      "channelId": "UCCN-6225-ASUzvPPhiSboJQ",
+      "title": "Streets of London song of Ralph McTell",
+      "description": "Gro Laier singing Streets of London accompanied by a beautiful piano played by Carl Ulrik Munk-Andersen",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/9ul2fEwEl_0/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/9ul2fEwEl_0/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/9ul2fEwEl_0/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/9ul2fEwEl_0/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/9ul2fEwEl_0/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Gro Laier (SmukkeSange)",
+      "playlistId": "PLY3QcufluVdRfEv1YIuf8WQCMPpCEfQXQ",
+      "position": 1,
+      "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "9ul2fEwEl_0"
+      }
+    },
+    "contentDetails": {
+      "videoId": "9ul2fEwEl_0",
+      "videoPublishedAt": "2014-08-23T12:52:12.000Z"
+    }
+  }, {
+    "kind": "youtube#playlistItem",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/atf6UWKGlcmPgCeOUJD-nH7wyC4\"",
+    "id": "UExZM1FjdWZsdVZkUmZFdjFZSXVmOFdRQ01QcENFZlFYUS5DQUNERDQ2NkIzRUQxNTY1",
+    "snippet": {
+      "publishedAt": "2015-03-14T07:20:22.000Z",
+      "channelId": "UCCN-6225-ASUzvPPhiSboJQ",
+      "title": "Summertime by George Gershwin (composer) and Du Bose Heyward (Authour)",
+      "description": "Gro Laier with Carl Ulrik Munk-Andersen on piano. \nFrom Porgy and Bess, 1935",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/vFiLl9_jfns/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/vFiLl9_jfns/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/vFiLl9_jfns/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/vFiLl9_jfns/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/vFiLl9_jfns/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Gro Laier (SmukkeSange)",
+      "playlistId": "PLY3QcufluVdRfEv1YIuf8WQCMPpCEfQXQ",
+      "position": 2,
+      "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "vFiLl9_jfns"
+      }
+    },
+    "contentDetails": {
+      "videoId": "vFiLl9_jfns",
+      "videoPublishedAt": "2015-03-14T07:20:19.000Z"
+    }
+  }, {
+    "kind": "youtube#playlistItem",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/xHpFoK-a7ewoAs4P_9exGT11VDo\"",
+    "id": "UExZM1FjdWZsdVZkUmZFdjFZSXVmOFdRQ01QcENFZlFYUS41MzJCQjBCNDIyRkJDN0VD",
+    "snippet": {
+      "publishedAt": "2014-11-12T19:50:13.000Z",
+      "channelId": "UCCN-6225-ASUzvPPhiSboJQ",
+      "title": "The Man I Love",
+      "description": "Smukkesange (Gro Laier) singing The Man I Love written by George and Ira Gershwin. On piano Carl Ulrik Munk-Andersen.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/7DgrF619e9w/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/7DgrF619e9w/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/7DgrF619e9w/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/7DgrF619e9w/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/7DgrF619e9w/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Gro Laier (SmukkeSange)",
+      "playlistId": "PLY3QcufluVdRfEv1YIuf8WQCMPpCEfQXQ",
+      "position": 3,
+      "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "7DgrF619e9w"
+      }
+    },
+    "contentDetails": {
+      "videoId": "7DgrF619e9w",
+      "videoPublishedAt": "2014-11-12T19:50:12.000Z"
+    }
+  }, {
+    "kind": "youtube#playlistItem",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/WGvwARjidGcF6zJNOb2m-KFrfi4\"",
+    "id": "UExZM1FjdWZsdVZkUmZFdjFZSXVmOFdRQ01QcENFZlFYUS41MjE1MkI0OTQ2QzJGNzNG",
+    "snippet": {
+      "publishedAt": "2014-05-18T16:43:05.000Z",
+      "channelId": "UCCN-6225-ASUzvPPhiSboJQ",
+      "title": "Gro Laier accompanied by Bjarne Brems (guitar) - Drink to Me Only With Thine Eyes",
+      "description": "Folk Song - Text: Ben Jonson (1572-1637)",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/DjZYOK5j4-4/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/DjZYOK5j4-4/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/DjZYOK5j4-4/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/DjZYOK5j4-4/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/DjZYOK5j4-4/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Gro Laier (SmukkeSange)",
+      "playlistId": "PLY3QcufluVdRfEv1YIuf8WQCMPpCEfQXQ",
+      "position": 4,
+      "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "DjZYOK5j4-4"
+      }
+    },
+    "contentDetails": {
+      "videoId": "DjZYOK5j4-4",
+      "videoPublishedAt": "2014-05-19T16:50:30.000Z"
+    }
+  }]
+};
+
+},{}],91:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
+  "kind": "youtube#playlistItemListResponse",
+  "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/VvL0m175hgVpnq36N2liuOtGENM\"",
+  "pageInfo": {
+    "totalResults": 3,
+    "resultsPerPage": 5
+  },
+  "items": [{
+    "kind": "youtube#playlistItem",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/2U5fD_Q2kycvyEHmWiB1pkOZKLs\"",
+    "id": "UExZM1FjdWZsdVZkVExacl9sUkxaRmZMN1JGYUZ6RlVOQy4yODlGNEE0NkRGMEEzMEQy",
+    "snippet": {
+      "publishedAt": "2016-05-14T19:54:01.000Z",
+      "channelId": "UCCN-6225-ASUzvPPhiSboJQ",
+      "title": "Visen om de atten svaner",
+      "description": "B. Andersson/ B. Ulvaeus. Dansk tekst Poul Sørensen\nVokal: Gro Laier\nPiano: Carl Ulrik Munk-Andersen\nFoto: www.Jasperfoto.dk",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/Gnppe79b2HI/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/Gnppe79b2HI/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/Gnppe79b2HI/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/Gnppe79b2HI/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/Gnppe79b2HI/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Gro Laier (SmukkeSange)",
+      "playlistId": "PLY3QcufluVdTLZr_lRLZFfL7RFaFzFUNC",
+      "position": 0,
+      "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "Gnppe79b2HI"
+      }
+    },
+    "contentDetails": {
+      "videoId": "Gnppe79b2HI",
+      "videoPublishedAt": "2016-01-05T10:15:02.000Z"
+    }
+  }, {
+    "kind": "youtube#playlistItem",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/HZJ0-xNJB-ANXAKUwMfIaM4Dc8A\"",
+    "id": "UExZM1FjdWZsdVZkVExacl9sUkxaRmZMN1JGYUZ6RlVOQy41MjE1MkI0OTQ2QzJGNzNG",
+    "snippet": {
+      "publishedAt": "2017-04-17T11:20:58.000Z",
+      "channelId": "UCCN-6225-ASUzvPPhiSboJQ",
+      "title": "Forårsdag (Anne Linnet cover)",
+      "description": "Tekst og musik: Anne Linnet\nVokal: Gro Laier\nKlaver: Carl Ulrik Munk-Andersen\nBillede: www.Jasperfoto.dk",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/yrm-V69OCMA/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/yrm-V69OCMA/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/yrm-V69OCMA/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/yrm-V69OCMA/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/yrm-V69OCMA/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Gro Laier (SmukkeSange)",
+      "playlistId": "PLY3QcufluVdTLZr_lRLZFfL7RFaFzFUNC",
+      "position": 1,
+      "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "yrm-V69OCMA"
+      }
+    },
+    "contentDetails": {
+      "videoId": "yrm-V69OCMA",
+      "videoPublishedAt": "2017-04-17T11:25:53.000Z"
+    }
+  }, {
+    "kind": "youtube#playlistItem",
+    "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/QcTz9i054f9CnJuKizoUXpIRcPY\"",
+    "id": "UExZM1FjdWZsdVZkVExacl9sUkxaRmZMN1JGYUZ6RlVOQy4xMkVGQjNCMUM1N0RFNEUx",
+    "snippet": {
+      "publishedAt": "2017-07-23T16:48:18.000Z",
+      "channelId": "UCCN-6225-ASUzvPPhiSboJQ",
+      "title": "Hilsen til forårssolen (cover)",
+      "description": "Melodi: Povl Dissing 1981\nTekst: Benny Andersen 1981\nPiano: Carl Ulrik Munk-Andersen\nVokal: Gro Laier",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/6FVqvj4zbKE/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/6FVqvj4zbKE/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/6FVqvj4zbKE/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/6FVqvj4zbKE/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/6FVqvj4zbKE/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      },
+      "channelTitle": "Gro Laier (SmukkeSange)",
+      "playlistId": "PLY3QcufluVdTLZr_lRLZFfL7RFaFzFUNC",
+      "position": 2,
+      "resourceId": {
+        "kind": "youtube#video",
+        "videoId": "6FVqvj4zbKE"
+      }
+    },
+    "contentDetails": {
+      "videoId": "6FVqvj4zbKE",
+      "videoPublishedAt": "2017-07-23T17:30:34.000Z"
+    }
+  }]
+};
+
+},{}],92:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _mock = require('./mock');
+var _mock = require('./mock-data/mock');
 
 var _mock2 = _interopRequireDefault(_mock);
+
+var _playlist = require('./mock-data/playlists/playlist-1');
+
+var _playlist2 = _interopRequireDefault(_playlist);
+
+var _playlist3 = require('./mock-data/playlists/playlist-2');
+
+var _playlist4 = _interopRequireDefault(_playlist3);
+
+var _mock3 = require('./mock-data/mock.videos');
+
+var _mock4 = _interopRequireDefault(_mock3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var VideosController = function () {
-    function VideosController() {
+    function VideosController($scope, $sce) {
         _classCallCheck(this, VideosController);
 
         this.mockData = _mock2.default;
+        this.playlist1 = _playlist2.default;
+        this.playlist2 = _playlist4.default;
+        this.mockVideos = _mock4.default;
+
+        this.videoIds = ['htEmKnJ0wlo', '9ul2fEwEl_0', 'vFiLl9_jfns', '7DgrF619e9w', 'JXsvKphqAFo', 'Gnppe79b2HI', 'yrm-V69OCMA', '6FVqvj4zbKE'];
+
+        function createUrl() {}
+
+        $scope.htmlSafe = function (data) {
+            return $sce.trustAsHtml(data);
+        };
     }
 
     _createClass(VideosController, [{
@@ -45334,7 +45873,7 @@ var VideosController = function () {
 
 exports.default = VideosController;
 
-},{"./mock":88}],90:[function(require,module,exports){
+},{"./mock-data/mock":88,"./mock-data/mock.videos":89,"./mock-data/playlists/playlist-1":90,"./mock-data/playlists/playlist-2":91}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45349,10 +45888,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var VideosComponent = {
     controller: _videos2.default,
-    template: '\n    <div id="videos">\n        <div ng-repeat="item in $ctrl.mockData.items">\n            {{item.snippet.title}}\n        </div>\n    </div>'
+    template: '\n    <div id="videos" class="videos">\n        <div ng-repeat="video in $ctrl.mockVideos.videos" class="video-card">\n            <span ng-bind-html="htmlSafe(video.video)"></span>\n            <h3>{{video.title}}</h3>\n            <p>{{video.description}}</p>\n        </div>\n    </div>'
 };
 
 exports.default = VideosComponent;
-// ng-repeat="icon in $ctrl.iconData.icons"
 
-},{"./videos.controller":89}]},{},[76]);
+},{"./videos.controller":92}]},{},[76]);
