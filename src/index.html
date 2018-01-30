@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <title>Gro Laier Music</title>
-        <!-- <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-        <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" > -->
-        <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
-        <link href="assets/stylesheets/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet">
+        <!-- <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" > -->
+        <!-- <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css"> -->
+        <link href="assets/stylesheets/index.css" rel="stylesheet">
+        <script src="https://apis.google.com/js/api.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+            
     </head>
-    <body ng-app="myApp">
-        <div ui-view>Hello World!</div>
+    <body ng-app="website">
+            <div id="results"></div>
+        <header>
+            <navbar></navbar>
+            <intro></intro>
+        </header>
+        
+        <about></about>
+        <videos></videos>
+        <contact></contact>
     </body>
-    <script type="text/javascript" src="vendor.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <footer class="footer">
+        <p>&copy;Copyright 2018 Gro Laier | All Rights Reserved.</p>
+    </footer>
+    <!-- <script type="text/javascript" src="vendor.min.js"></script> -->
+    <script type="text/javascript" src="main.js" charset="utf-8"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <!-- <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad();"
+      onreadystatechange="if (this.readyState === 'complete') this.onload();">
+    </script> -->
+
 </html>
