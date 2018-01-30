@@ -546,7 +546,7 @@ a {
 .videos {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: 20px; }
   .videos .video-card {
     border: 1px lightgrey solid;
@@ -555,3 +555,21 @@ a {
     padding: 10px;
     margin: 10px;
     text-align: left; }
+
+.contact {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 20px; }
+  .contact .contact-card {
+    border: 1px lightgrey solid;
+    width: 280px;
+    height: 400px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center; }
+    .contact .contact-card h3 {
+      font-weight: 500;
+      margin-bottom: 40px; }
+    .contact .contact-card .contact-widget {
+      margin-bottom: 40px; }
