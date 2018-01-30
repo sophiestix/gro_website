@@ -12,6 +12,14 @@
     &-heading h2 {
         margin: 0;
     }
+
+    &-heading-bottom {
+        background: $color-primary;
+        max-width: 200px;
+        height: 2px;
+        margin: 10px auto;
+        display: block;
+    }
 }
 
 .card-shadow {

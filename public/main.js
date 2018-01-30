@@ -44761,7 +44761,7 @@ var CardComponent = {
     transclude: {
         'headingSlot': 'h2'
     },
-    template: '\n    <div id="card" class="card card-shadow">\n        <heading ng-transclude="headingSlot" class="card-heading"></heading>\n        <ng-transclude></ng-transclude>\n    </div>'
+    template: '\n    <div id="card" class="card card-shadow">\n        <heading ng-transclude="headingSlot" class="card-heading"></heading>\n        <div class="card-heading-bottom"></div>\n        <ng-transclude></ng-transclude>\n    </div>'
 };
 
 exports.default = CardComponent;
