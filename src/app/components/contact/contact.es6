@@ -3,7 +3,7 @@ import controller from './contact.controller';
 const ContactComponent = {
     controller,
     template: `
-    <card>
+    <section>
         <h2>my contacts</h2>
         <div id="contact" class="contact">
             <div class="contact-card">
@@ -34,7 +34,7 @@ const ContactComponent = {
                 ></div>
             </div>
         </div>
-    </card>
+    </section>
     `
 }
 

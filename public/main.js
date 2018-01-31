@@ -44670,7 +44670,7 @@ Object.keys(_components2.default).forEach(function (componentName) {
     _angular2.default.module('website').component(componentName, _components2.default[componentName]);
 });
 
-},{"./components":83,"@uirouter/angularjs":1,"angular":75}],77:[function(require,module,exports){
+},{"./components":81,"@uirouter/angularjs":1,"angular":75}],77:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44711,62 +44711,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var AboutComponent = {
     controller: _about2.default,
-    template: '\n    <card>\n        <h2>about</h2>\n        <div id="about">\n            <div>\n                About text\n            </div>\n        </div>\n    </card>\n    '
+    template: '\n    <section>\n        <h2>about</h2>\n        <div id="about">\n            <div>\n                About text\n            </div>\n        </div>\n    </section>\n    '
 };
 
 exports.default = AboutComponent;
 
 },{"./about.controller":77}],79:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var CardController = function () {
-    function CardController() {
-        _classCallCheck(this, CardController);
-    }
-
-    _createClass(CardController, [{
-        key: "$onInit",
-        value: function $onInit() {}
-    }]);
-
-    return CardController;
-}();
-
-exports.default = CardController;
-
-},{}],80:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _card = require('./card.controller');
-
-var _card2 = _interopRequireDefault(_card);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var CardComponent = {
-    controller: _card2.default,
-    scope: {},
-    transclude: {
-        'headingSlot': 'h2'
-    },
-    template: '\n    <div id="card" class="card card-shadow">\n        <heading ng-transclude="headingSlot" class="card-heading"></heading>\n        <div class="card-heading-bottom"></div>\n        <ng-transclude></ng-transclude>\n    </div>'
-};
-
-exports.default = CardComponent;
-
-},{"./card.controller":79}],81:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44792,7 +44742,7 @@ var ContactController = function () {
 
 exports.default = ContactController;
 
-},{}],82:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44807,12 +44757,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ContactComponent = {
     controller: _contact2.default,
-    template: '\n    <card>\n        <h2>my contacts</h2>\n        <div id="contact" class="contact">\n            <div class="contact-card">\n                <h3>Write me!</h3>\n                <div class="contact-details">\n                    <p>Gro Laier</p>\n                    <p>smukkesange@gmail.com</p>\n                </div>\n                \n            </div>\n            <div class="contact-card">\n                <h3>Follow me!</h3>\n                <iframe \n                    src="https://open.spotify.com/follow/1/?uri=spotify:artist:6rahHKY7JiT3URemtuqazl&size=detail&theme=light"\n                    width="200" \n                    height="56" \n                    scrolling="no" \n                    frameborder="0" \n                    style="border:none; overflow:hidden;" \n                    allowtransparency="true"\n                    class="contact-widget"\n                ></iframe>\n                <div \n                    class="g-ytsubscribe contact-widget" \n                    data-channelid="UCCN-6225-ASUzvPPhiSboJQ" \n                    data-layout="full" \n                    data-count="default"\n                ></div>\n            </div>\n        </div>\n    </card>\n    '
+    template: '\n    <section>\n        <h2>my contacts</h2>\n        <div id="contact" class="contact">\n            <div class="contact-card">\n                <h3>Write me!</h3>\n                <div class="contact-details">\n                    <p>Gro Laier</p>\n                    <p>smukkesange@gmail.com</p>\n                </div>\n                \n            </div>\n            <div class="contact-card">\n                <h3>Follow me!</h3>\n                <iframe \n                    src="https://open.spotify.com/follow/1/?uri=spotify:artist:6rahHKY7JiT3URemtuqazl&size=detail&theme=light"\n                    width="200" \n                    height="56" \n                    scrolling="no" \n                    frameborder="0" \n                    style="border:none; overflow:hidden;" \n                    allowtransparency="true"\n                    class="contact-widget"\n                ></iframe>\n                <div \n                    class="g-ytsubscribe contact-widget" \n                    data-channelid="UCCN-6225-ASUzvPPhiSboJQ" \n                    data-layout="full" \n                    data-count="default"\n                ></div>\n            </div>\n        </div>\n    </section>\n    '
 };
 
 exports.default = ContactComponent;
 
-},{"./contact.controller":81}],83:[function(require,module,exports){
+},{"./contact.controller":79}],81:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44827,9 +44777,9 @@ var _intro = require('./intro/intro');
 
 var _intro2 = _interopRequireDefault(_intro);
 
-var _card = require('./card/card');
+var _section = require('./section/section');
 
-var _card2 = _interopRequireDefault(_card);
+var _section2 = _interopRequireDefault(_section);
 
 var _about = require('./about/about');
 
@@ -44852,14 +44802,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
     navbar: _navbar2.default,
     intro: _intro2.default,
-    card: _card2.default,
+    section: _section2.default,
     about: _about2.default,
     player: _player2.default,
     videos: _videos2.default,
     contact: _contact2.default
 };
 
-},{"./about/about":78,"./card/card":80,"./contact/contact":82,"./intro/intro":85,"./navbar/navbar":87,"./player/player":89,"./videos/videos":95}],84:[function(require,module,exports){
+},{"./about/about":78,"./contact/contact":80,"./intro/intro":83,"./navbar/navbar":85,"./player/player":87,"./section/section":89,"./videos/videos":95}],82:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44885,7 +44835,7 @@ var IntroController = function () {
 
 exports.default = IntroController;
 
-},{}],85:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44905,7 +44855,7 @@ var IntroComponent = {
 
 exports.default = IntroComponent;
 
-},{"./intro.controller":84}],86:[function(require,module,exports){
+},{"./intro.controller":82}],84:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45020,7 +44970,7 @@ exports.default = NavbarController;
 //   }
 // ]);
 
-},{}],87:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45040,7 +44990,7 @@ var NavbarComponent = {
 
 exports.default = NavbarComponent;
 
-},{"./navbar.controller":86}],88:[function(require,module,exports){
+},{"./navbar.controller":84}],86:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45151,7 +45101,7 @@ exports.default = PlayerController;
 // https://github.com/google/google-api-javascript-client/blob/master/samples/simpleRequest.html
 // https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest
 
-},{}],89:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45185,7 +45135,57 @@ exports.default = PlayerComponent;
     </iframe>
 </div> */
 
-},{"./player.controller":88}],90:[function(require,module,exports){
+},{"./player.controller":86}],88:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SectionController = function () {
+    function SectionController() {
+        _classCallCheck(this, SectionController);
+    }
+
+    _createClass(SectionController, [{
+        key: "$onInit",
+        value: function $onInit() {}
+    }]);
+
+    return SectionController;
+}();
+
+exports.default = SectionController;
+
+},{}],89:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _section = require('./section.controller');
+
+var _section2 = _interopRequireDefault(_section);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SectionComponent = {
+    controller: _section2.default,
+    scope: {},
+    transclude: {
+        'headingSlot': 'h2'
+    },
+    template: '\n    <div id="section" class="section section-shadow">\n        <heading ng-transclude="headingSlot" class="section-heading"></heading>\n        <div class="section-heading-bottom"></div>\n        <ng-transclude></ng-transclude>\n    </div>'
+};
+
+exports.default = SectionComponent;
+
+},{"./section.controller":88}],90:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45939,7 +45939,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var VideosComponent = {
     controller: _videos2.default,
-    template: '\n    <card>\n        <h2>my videos</h2>\n        <div id="videos" class="videos">\n        <div ng-repeat="video in $ctrl.mockVideos.videos" class="video-card">\n            <span ng-bind-html="htmlSafe(video.video)"></span>\n            <h3>{{video.title}}</h3>\n            <p>{{video.description}}</p>\n        </div>\n    </card>\n    '
+    template: '\n    <section>\n        <h2>my videos</h2>\n        <div id="videos" class="videos">\n        <div ng-repeat="video in $ctrl.mockVideos.videos" class="video-card">\n            <span ng-bind-html="htmlSafe(video.video)"></span>\n            <h3>{{video.title}}</h3>\n            <p>{{video.description}}</p>\n        </div>\n    </section>\n    '
 };
 
 exports.default = VideosComponent;
