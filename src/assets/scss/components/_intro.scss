@@ -7,6 +7,7 @@
     background-size: cover;
     width: auto;
     min-height: 625px;
+    padding: 20% 15%;
 
     position: relative;
     height: 100%;
@@ -15,10 +16,6 @@
     & p,
     & h1 {
         color: $white;
-    }
-
-    & h1 {
-        padding-top: 160px;
     }
 
     &:after {

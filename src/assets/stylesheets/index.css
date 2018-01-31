@@ -475,21 +475,21 @@ a {
     text-align: center; }
 
 .main-nav {
-  padding-top: 0.5em;
+  padding: 0.5em 0;
   text-align: center;
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   z-index: 999;
+  color: #fff;
   -webkit-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out;
-  background: #fff; }
+  transition: all 0.4s ease-out; }
   .main-nav li {
     display: inline-block;
     margin: 0 0.65em; }
   .main-nav a {
-    color: #343434;
+    color: #fff;
     font-size: 0.85em;
     font-weight: 300;
     text-decoration: none;
@@ -502,23 +502,25 @@ a {
     font-family: "Niconne", cursive;
     font-size: 1.5em; }
   .main-nav-bg {
-    -webkit-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    color: #343434;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
     background: #fff; }
+    .main-nav-bg a {
+      color: #343434; }
 
 .intro {
   background: url("/public/assets/images/8321.jpg");
   background-size: cover;
   width: auto;
   min-height: 625px;
+  padding: 20% 15%;
   position: relative;
   height: 100%;
   z-index: 1; }
   .intro p,
   .intro h1 {
     color: #fff; }
-  .intro h1 {
-    padding-top: 160px; }
   .intro:after {
     position: absolute;
     background: rgba(0, 0, 0, 0.3);
