@@ -4,12 +4,13 @@ const CardComponent = {
     controller,
     scope: {},
     transclude: {
-        'headingSlot': 'h2',
-      },
+        'cardHeader': '?span',
+        'cardTitle': 'h3'
+    },
     template: `
-    <div id="card" class="card card-shadow">
-        <heading ng-transclude="headingSlot" class="card-heading"></heading>
-        <div class="card-heading-bottom"></div>
+    <div id="card" class="card">
+        <span ng-transclude="cardHeader"></span>
+        <heading ng-transclude="cardTitle" class="card-title"></heading>
         <ng-transclude></ng-transclude>
     </div>`
 }

@@ -44711,7 +44711,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var AboutComponent = {
     controller: _about2.default,
-    template: '\n    <card>\n        <h2>about</h2>\n        <div id="about">\n            <div>\n                About text\n            </div>\n        </div>\n    </card>\n    '
+    template: '\n    <section>\n        <h2>about</h2>\n        <div id="about">\n            <div>\n                About text\n            </div>\n        </div>\n    </section>\n    '
 };
 
 exports.default = AboutComponent;
@@ -44759,9 +44759,10 @@ var CardComponent = {
     controller: _card2.default,
     scope: {},
     transclude: {
-        'headingSlot': 'h2'
+        'cardHeader': '?span',
+        'cardTitle': 'h3'
     },
-    template: '\n    <div id="card" class="card card-shadow">\n        <heading ng-transclude="headingSlot" class="card-heading"></heading>\n        <div class="card-heading-bottom"></div>\n        <ng-transclude></ng-transclude>\n    </div>'
+    template: '\n    <div id="card" class="card">\n        <span ng-transclude="cardHeader"></span>\n        <heading ng-transclude="cardTitle" class="card-title"></heading>\n        <ng-transclude></ng-transclude>\n    </div>'
 };
 
 exports.default = CardComponent;
@@ -44807,7 +44808,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ContactComponent = {
     controller: _contact2.default,
-    template: '\n    <card>\n        <h2>my contacts</h2>\n        <div id="contact" class="contact">\n            <div class="contact-card">\n                <h3>Write me!</h3>\n                <div class="contact-details">\n                    <p>Gro Laier</p>\n                    <p>smukkesange@gmail.com</p>\n                </div>\n                \n            </div>\n            <div class="contact-card">\n                <h3>Follow me!</h3>\n                <iframe \n                    src="https://open.spotify.com/follow/1/?uri=spotify:artist:6rahHKY7JiT3URemtuqazl&size=detail&theme=light"\n                    width="200" \n                    height="56" \n                    scrolling="no" \n                    frameborder="0" \n                    style="border:none; overflow:hidden;" \n                    allowtransparency="true"\n                    class="contact-widget"\n                ></iframe>\n                <div \n                    class="g-ytsubscribe contact-widget" \n                    data-channelid="UCCN-6225-ASUzvPPhiSboJQ" \n                    data-layout="full" \n                    data-count="default"\n                ></div>\n            </div>\n        </div>\n    </card>\n    '
+    template: '\n    <section>\n        <h2>my contacts</h2>\n        <div id="contact" class="contact">\n            <card class="card-contact contact-align--center">\n                <h3>Write me!</h3>\n                <div class="contact-details">\n                    <p>Gro Laier</p>\n                    <p>smukkesange@gmail.com</p>\n                </div>\n            </card>\n            <card class="card-contact contact-align--center">\n                <h3>Follow me!</h3>\n                <iframe \n                    src="https://open.spotify.com/follow/1/?uri=spotify:artist:6rahHKY7JiT3URemtuqazl&size=detail&theme=light"\n                    width="200" \n                    height="56" \n                    scrolling="no" \n                    frameborder="0" \n                    style="border:none; overflow:hidden;" \n                    allowtransparency="true"\n                    class="contact-widget"\n                ></iframe>\n                <div \n                    class="g-ytsubscribe contact-widget" \n                    data-channelid="UCCN-6225-ASUzvPPhiSboJQ" \n                    data-layout="full" \n                    data-count="default"\n                ></div>\n            </card>\n        </div>\n    </section>\n    '
 };
 
 exports.default = ContactComponent;
@@ -44827,9 +44828,9 @@ var _intro = require('./intro/intro');
 
 var _intro2 = _interopRequireDefault(_intro);
 
-var _card = require('./card/card');
+var _section = require('./section/section');
 
-var _card2 = _interopRequireDefault(_card);
+var _section2 = _interopRequireDefault(_section);
 
 var _about = require('./about/about');
 
@@ -44847,19 +44848,24 @@ var _contact = require('./contact/contact');
 
 var _contact2 = _interopRequireDefault(_contact);
 
+var _card = require('./card/card');
+
+var _card2 = _interopRequireDefault(_card);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
     navbar: _navbar2.default,
     intro: _intro2.default,
-    card: _card2.default,
+    section: _section2.default,
     about: _about2.default,
     player: _player2.default,
     videos: _videos2.default,
-    contact: _contact2.default
+    contact: _contact2.default,
+    card: _card2.default
 };
 
-},{"./about/about":78,"./card/card":80,"./contact/contact":82,"./intro/intro":85,"./navbar/navbar":87,"./player/player":89,"./videos/videos":95}],84:[function(require,module,exports){
+},{"./about/about":78,"./card/card":80,"./contact/contact":82,"./intro/intro":85,"./navbar/navbar":87,"./player/player":89,"./section/section":91,"./videos/videos":97}],84:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45191,6 +45197,56 @@ exports.default = PlayerComponent;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SectionController = function () {
+    function SectionController() {
+        _classCallCheck(this, SectionController);
+    }
+
+    _createClass(SectionController, [{
+        key: "$onInit",
+        value: function $onInit() {}
+    }]);
+
+    return SectionController;
+}();
+
+exports.default = SectionController;
+
+},{}],91:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _section = require('./section.controller');
+
+var _section2 = _interopRequireDefault(_section);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var SectionComponent = {
+    controller: _section2.default,
+    scope: {},
+    transclude: {
+        'headingSlot': 'h2'
+    },
+    template: '\n    <div id="section" class="section section-shadow">\n        <heading ng-transclude="headingSlot" class="section-heading"></heading>\n        <div class="section-heading-bottom"></div>\n        <ng-transclude></ng-transclude>\n    </div>'
+};
+
+exports.default = SectionComponent;
+
+},{"./section.controller":90}],92:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.default = {
     "kind": "youtube#activityListResponse",
     "etag": "\"Wu2llbfqCdxIVjGbVPm2DslKPCA/UURxkjz7uD8a_ZV_YsR_ZST9CIo\"",
@@ -45421,7 +45477,7 @@ exports.default = {
     }]
 };
 
-},{}],91:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45451,7 +45507,7 @@ exports.default = {
     }]
 };
 
-},{}],92:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45707,7 +45763,7 @@ exports.default = {
   }]
 };
 
-},{}],93:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45867,7 +45923,7 @@ exports.default = {
   }]
 };
 
-},{}],94:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45924,7 +45980,7 @@ var VideosController = function () {
 
 exports.default = VideosController;
 
-},{"./mock-data/mock":90,"./mock-data/mock.videos":91,"./mock-data/playlists/playlist-1":92,"./mock-data/playlists/playlist-2":93}],95:[function(require,module,exports){
+},{"./mock-data/mock":92,"./mock-data/mock.videos":93,"./mock-data/playlists/playlist-1":94,"./mock-data/playlists/playlist-2":95}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45939,9 +45995,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var VideosComponent = {
     controller: _videos2.default,
-    template: '\n    <card>\n        <h2>my videos</h2>\n        <div id="videos" class="videos">\n        <div ng-repeat="video in $ctrl.mockVideos.videos" class="video-card">\n            <span ng-bind-html="htmlSafe(video.video)"></span>\n            <h3>{{video.title}}</h3>\n            <p>{{video.description}}</p>\n        </div>\n    </card>\n    '
+    template: '\n    <section>\n        <h2>my videos</h2>\n        <div id="videos" class="videos">\n            <card ng-repeat="video in $ctrl.mockVideos.videos">\n                <span ng-bind-html="htmlSafe(video.video)"></span>\n                <h3>{{video.title}}</h3>\n                <p>{{video.description}}</p>\n            </card>\n        </div>\n    </section>\n    '
 };
 
 exports.default = VideosComponent;
 
-},{"./videos.controller":94}]},{},[76]);
+},{"./videos.controller":96}]},{},[76]);

@@ -3,27 +3,10 @@
 // ======================================
 
 .card {
-    background: $white;
-    width: 70%;
-    margin: 40px auto;
-    text-align: center;
-    padding: 25px;
-
-    &-heading h2 {
-        margin: 0;
-    }
-
-    &-heading-bottom {
-        background: $color-primary;
-        max-width: 200px;
-        height: 2px;
-        margin: 10px auto;
-        display: block;
-    }
-}
-
-.card-shadow {
-    -webkit-box-shadow: 0px 5px 40px 18px rgba(0,0,0,0.1);
-    -moz-box-shadow: 0px 5px 40px 18px rgba(0,0,0,0.1);
-    box-shadow: 0px 5px 40px 18px rgba(0,0,0,0.1);
+    border: 1px lightgrey solid;
+    width: 280px;
+    height: 400px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
 }
