@@ -9,8 +9,16 @@
     margin: 20px;
     padding: 20px;
 
-    &-align--center {
+    & h3 {
+        padding-top: 20px;
+    }
+
+    & .card {
         text-align: center;
+    }
+
+    &-details {
+        padding-top: 30px;
     }
 
     &-widget {
