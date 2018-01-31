@@ -17,6 +17,10 @@
         color: $white;
     }
 
+    & h1 {
+        padding-top: 160px;
+    }
+
     &:after {
         position: absolute;
         background: rgba(0, 0, 0, .3);

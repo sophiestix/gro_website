@@ -483,7 +483,8 @@ a {
   width: 100%;
   z-index: 999;
   -webkit-transition: all 0.4s ease-out;
-  transition: all 0.4s ease-out; }
+  transition: all 0.4s ease-out;
+  background: #fff; }
   .main-nav li {
     display: inline-block;
     margin: 0 0.65em; }
@@ -516,6 +517,8 @@ a {
   .intro p,
   .intro h1 {
     color: #fff; }
+  .intro h1 {
+    padding-top: 160px; }
   .intro:after {
     position: absolute;
     background: rgba(0, 0, 0, 0.3);
