@@ -6,15 +6,14 @@ const ContactComponent = {
     <section>
         <h2>my contacts</h2>
         <div id="contact" class="contact">
-            <div class="contact-card">
+            <card class="card-contact contact-align--center">
                 <h3>Write me!</h3>
                 <div class="contact-details">
                     <p>Gro Laier</p>
                     <p>smukkesange@gmail.com</p>
                 </div>
-                
-            </div>
-            <div class="contact-card">
+            </card>
+            <card class="card-contact contact-align--center">
                 <h3>Follow me!</h3>
                 <iframe 
                     src="https://open.spotify.com/follow/1/?uri=spotify:artist:6rahHKY7JiT3URemtuqazl&size=detail&theme=light"
@@ -32,7 +31,7 @@ const ContactComponent = {
                     data-layout="full" 
                     data-count="default"
                 ></div>
-            </div>
+            </card>
         </div>
     </section>
     `

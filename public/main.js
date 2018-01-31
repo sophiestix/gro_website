@@ -44670,7 +44670,7 @@ Object.keys(_components2.default).forEach(function (componentName) {
     _angular2.default.module('website').component(componentName, _components2.default[componentName]);
 });
 
-},{"./components":81,"@uirouter/angularjs":1,"angular":75}],77:[function(require,module,exports){
+},{"./components":83,"@uirouter/angularjs":1,"angular":75}],77:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44727,6 +44727,57 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var CardController = function () {
+    function CardController() {
+        _classCallCheck(this, CardController);
+    }
+
+    _createClass(CardController, [{
+        key: "$onInit",
+        value: function $onInit() {}
+    }]);
+
+    return CardController;
+}();
+
+exports.default = CardController;
+
+},{}],80:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _card = require('./card.controller');
+
+var _card2 = _interopRequireDefault(_card);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CardComponent = {
+    controller: _card2.default,
+    scope: {},
+    transclude: {
+        'cardHeader': '?span',
+        'cardTitle': 'h3'
+    },
+    template: '\n    <div id="card" class="card">\n        <span ng-transclude="cardHeader"></span>\n        <heading ng-transclude="cardTitle" class="card-title"></heading>\n        <ng-transclude></ng-transclude>\n    </div>'
+};
+
+exports.default = CardComponent;
+
+},{"./card.controller":79}],81:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var ContactController = function () {
     function ContactController() {
         _classCallCheck(this, ContactController);
@@ -44742,7 +44793,7 @@ var ContactController = function () {
 
 exports.default = ContactController;
 
-},{}],80:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44757,12 +44808,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ContactComponent = {
     controller: _contact2.default,
-    template: '\n    <section>\n        <h2>my contacts</h2>\n        <div id="contact" class="contact">\n            <div class="contact-card">\n                <h3>Write me!</h3>\n                <div class="contact-details">\n                    <p>Gro Laier</p>\n                    <p>smukkesange@gmail.com</p>\n                </div>\n                \n            </div>\n            <div class="contact-card">\n                <h3>Follow me!</h3>\n                <iframe \n                    src="https://open.spotify.com/follow/1/?uri=spotify:artist:6rahHKY7JiT3URemtuqazl&size=detail&theme=light"\n                    width="200" \n                    height="56" \n                    scrolling="no" \n                    frameborder="0" \n                    style="border:none; overflow:hidden;" \n                    allowtransparency="true"\n                    class="contact-widget"\n                ></iframe>\n                <div \n                    class="g-ytsubscribe contact-widget" \n                    data-channelid="UCCN-6225-ASUzvPPhiSboJQ" \n                    data-layout="full" \n                    data-count="default"\n                ></div>\n            </div>\n        </div>\n    </section>\n    '
+    template: '\n    <section>\n        <h2>my contacts</h2>\n        <div id="contact" class="contact">\n            <card class="card-contact contact-align--center">\n                <h3>Write me!</h3>\n                <div class="contact-details">\n                    <p>Gro Laier</p>\n                    <p>smukkesange@gmail.com</p>\n                </div>\n            </card>\n            <card class="card-contact contact-align--center">\n                <h3>Follow me!</h3>\n                <iframe \n                    src="https://open.spotify.com/follow/1/?uri=spotify:artist:6rahHKY7JiT3URemtuqazl&size=detail&theme=light"\n                    width="200" \n                    height="56" \n                    scrolling="no" \n                    frameborder="0" \n                    style="border:none; overflow:hidden;" \n                    allowtransparency="true"\n                    class="contact-widget"\n                ></iframe>\n                <div \n                    class="g-ytsubscribe contact-widget" \n                    data-channelid="UCCN-6225-ASUzvPPhiSboJQ" \n                    data-layout="full" \n                    data-count="default"\n                ></div>\n            </card>\n        </div>\n    </section>\n    '
 };
 
 exports.default = ContactComponent;
 
-},{"./contact.controller":79}],81:[function(require,module,exports){
+},{"./contact.controller":81}],83:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44797,6 +44848,10 @@ var _contact = require('./contact/contact');
 
 var _contact2 = _interopRequireDefault(_contact);
 
+var _card = require('./card/card');
+
+var _card2 = _interopRequireDefault(_card);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
@@ -44806,10 +44861,11 @@ exports.default = {
     about: _about2.default,
     player: _player2.default,
     videos: _videos2.default,
-    contact: _contact2.default
+    contact: _contact2.default,
+    card: _card2.default
 };
 
-},{"./about/about":78,"./contact/contact":80,"./intro/intro":83,"./navbar/navbar":85,"./player/player":87,"./section/section":89,"./videos/videos":95}],82:[function(require,module,exports){
+},{"./about/about":78,"./card/card":80,"./contact/contact":82,"./intro/intro":85,"./navbar/navbar":87,"./player/player":89,"./section/section":91,"./videos/videos":97}],84:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44835,7 +44891,7 @@ var IntroController = function () {
 
 exports.default = IntroController;
 
-},{}],83:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44855,7 +44911,7 @@ var IntroComponent = {
 
 exports.default = IntroComponent;
 
-},{"./intro.controller":82}],84:[function(require,module,exports){
+},{"./intro.controller":84}],86:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44970,7 +45026,7 @@ exports.default = NavbarController;
 //   }
 // ]);
 
-},{}],85:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -44990,7 +45046,7 @@ var NavbarComponent = {
 
 exports.default = NavbarComponent;
 
-},{"./navbar.controller":84}],86:[function(require,module,exports){
+},{"./navbar.controller":86}],88:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45101,7 +45157,7 @@ exports.default = PlayerController;
 // https://github.com/google/google-api-javascript-client/blob/master/samples/simpleRequest.html
 // https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest
 
-},{}],87:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45135,7 +45191,7 @@ exports.default = PlayerComponent;
     </iframe>
 </div> */
 
-},{"./player.controller":86}],88:[function(require,module,exports){
+},{"./player.controller":88}],90:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45161,7 +45217,7 @@ var SectionController = function () {
 
 exports.default = SectionController;
 
-},{}],89:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45185,7 +45241,7 @@ var SectionComponent = {
 
 exports.default = SectionComponent;
 
-},{"./section.controller":88}],90:[function(require,module,exports){
+},{"./section.controller":90}],92:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45421,7 +45477,7 @@ exports.default = {
     }]
 };
 
-},{}],91:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45451,7 +45507,7 @@ exports.default = {
     }]
 };
 
-},{}],92:[function(require,module,exports){
+},{}],94:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45707,7 +45763,7 @@ exports.default = {
   }]
 };
 
-},{}],93:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45867,7 +45923,7 @@ exports.default = {
   }]
 };
 
-},{}],94:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45924,7 +45980,7 @@ var VideosController = function () {
 
 exports.default = VideosController;
 
-},{"./mock-data/mock":90,"./mock-data/mock.videos":91,"./mock-data/playlists/playlist-1":92,"./mock-data/playlists/playlist-2":93}],95:[function(require,module,exports){
+},{"./mock-data/mock":92,"./mock-data/mock.videos":93,"./mock-data/playlists/playlist-1":94,"./mock-data/playlists/playlist-2":95}],97:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -45939,9 +45995,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var VideosComponent = {
     controller: _videos2.default,
-    template: '\n    <section>\n        <h2>my videos</h2>\n        <div id="videos" class="videos">\n        <div ng-repeat="video in $ctrl.mockVideos.videos" class="video-card">\n            <span ng-bind-html="htmlSafe(video.video)"></span>\n            <h3>{{video.title}}</h3>\n            <p>{{video.description}}</p>\n        </div>\n    </section>\n    '
+    template: '\n    <section>\n        <h2>my videos</h2>\n        <div id="videos" class="videos">\n            <card ng-repeat="video in $ctrl.mockVideos.videos">\n                <span ng-bind-html="htmlSafe(video.video)"></span>\n                <h3>{{video.title}}</h3>\n                <p>{{video.description}}</p>\n            </card>\n        </div>\n    </section>\n    '
 };
 
 exports.default = VideosComponent;
 
-},{"./videos.controller":94}]},{},[76]);
+},{"./videos.controller":96}]},{},[76]);

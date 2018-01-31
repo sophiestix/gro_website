@@ -5,6 +5,7 @@ import about from './about/about';
 import player from './player/player';
 import videos from './videos/videos';
 import contact from './contact/contact';
+import card from './card/card';
 
 export default {
     navbar,
@@ -13,5 +14,6 @@ export default {
     about,
     player,
     videos,
-    contact
+    contact,
+    card
 }

@@ -5,7 +5,7 @@ const SectionComponent = {
     scope: {},
     transclude: {
         'headingSlot': 'h2',
-      },
+    },
     template: `
     <div id="section" class="section section-shadow">
         <heading ng-transclude="headingSlot" class="section-heading"></heading>
